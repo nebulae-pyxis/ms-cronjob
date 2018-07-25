@@ -1,5 +1,5 @@
 {
-  "name": "@nebulae-tpm/mbe-cronjob",
+  "name": "@nebulae-pyxis/mbe-cronjob",
   "version": "0.0.1",
   "description": "BackEnd for the Cronjob Microservice",
   "main": "server.js",

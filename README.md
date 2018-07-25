@@ -31,9 +31,9 @@ This process is handle by three subprocess:
 ```
 .
 ├── frontend                            => Micro-FrontEnds - not yet available  
-│   └── emi                             => Micro-FrontEnd for [EMI FrontEnd](https://github.com/nebulae-tpm/emi) - not yet available  
+│   └── emi                             => Micro-FrontEnd for [EMI FrontEnd](https://github.com/nebulae-pyxis/emi) - not yet available  
 ├── api                                 => Micro-APIs  
-│   └── gateway                         => Micro-API for [Gateway API](https://github.com/nebulae-tpm/gateway)  
+│   └── gateway                         => Micro-API for [Gateway API](https://github.com/nebulae-pyxis/gateway)  
 ├── backend                             => Micro-BackEnds  
 │   ├── cronjob                         => Micro-BackEnd responsible for store and execute jobs 
 ├── etc                                 => Micro-Service config Files.  
@@ -54,7 +54,7 @@ Exposed interfaces to send Commands and Queries by the CQRS principles.
 The MicroService exposes its interfaces as Micro-APIs that are nested on the general API. 
 
 ## GraphQL throught Gateway API <a name="api_gateway_graphql"></a>
-These are the exposed GraphQL functions throught the [Gateway API](https://github.com/nebulae-tpm/gateway). 
+These are the exposed GraphQL functions throught the [Gateway API](https://github.com/nebulae-pyxis/gateway). 
 
 Note: You may find the GraphQL schema [here](api/gateway/graphql/devices/schema.gql)
 
