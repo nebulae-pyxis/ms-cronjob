@@ -10,7 +10,7 @@
           "en": "System",
           "es": "Sistema"
         },
-        "priority": 1000
+        "priority": 100
       }
     ],
     "contents": [
@@ -26,7 +26,7 @@
         "path": "cronjob",
         "loadChildren": "./main/content/cronjob/cronjob.module#CronjobModule",
         "priority": 100000,
-        "roles" : ["developer"]
+        "roles" : ["SYSADMIN"]
       }
     ],
     "preBuildCommands": [],
