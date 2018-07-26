@@ -42,7 +42,7 @@ spec:
           value: Cronjob
         # JWT CONGIF        
         - name: JWT_PUBLIC_KEY
-          value: -----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhgt5bAiWmJgCQO51sxYkC4Q8KtPhwxvavEHK+c4Qa+GQ0kdv+PGyQjFtcCArvC95YdGoVbvSW8PeW13HW/pvDyFPi1S4gfAdqQiOOraohScSQWG2IoaDfpgDtr0T4he7ELT1+NoWUKCQtmqv/6ciUDRc4n6OO+nWnUp9CAUiYmY2W9tErtTT/vehHDyMPBHw3mPWW4cq/gXggrOyUp5rBsrbvouiJ9ewHWheEWXDgPXTVpWKwgmjc7JdhVEIZbrUoMiLf6FzstaYyhaK/8if7w/qO7GFk0DvRBsZursFlxSVdxux6y8zvIFr8pZGStfXw4f6kVvAIy3Pxw6MPZXYhQIDAQAB\n-----END PUBLIC KEY-----
+          value: -----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6mv0ByMprlVOd2tzyw/+BxOylLOTG5+oLFgaCiQu3RSIoVyDXtK9d2+kSmP2qsDE+wqVFEdpw2HrUXB8vhjUpu0CluzIw4m5v6l6ExHqyQHBWTCrX4Aynb3eQIWDm1B5Z592XYBLC+ZMDCDkUeiy7R4rGZnG7BPieAGP7KpO23Yc3YVe16Xkwewp3KOgMwch3uyjLVLu386qAeRfEd6yoMYjt+n5dJ5Lv9ZE+vod+BXOrlbmar3GLnE+x+c07YQfAk1jG2WRucN2wqmBKvygRz/Z50jMEclUjddH2wiXbBp9g83MDSQna93tOxlnhRmCTkzsRZqSRVb7HzjASIbfFQIDAQAB\n-----END PUBLIC KEY-----
         # API - GATEWAY CONFIG
         - name: GATEWAY_REPLIES_TOPIC_SUBSCRIPTION
           value: gateway-replies-topic-mbe-cronjob
