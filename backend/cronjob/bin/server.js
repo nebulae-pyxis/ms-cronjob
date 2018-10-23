@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').load();
 }
 
-const graphQlService = require('./services/gateway/GraphQlService')();
+const graphQlService = require('./services/emi-gateway/GraphQlService')();
 const mongoDB = require('./data/MongoDB')();
 const cronjobManager = require('./domain/CronjobManager')();
 const eventSourcing = require('./tools/EventSourcing')();

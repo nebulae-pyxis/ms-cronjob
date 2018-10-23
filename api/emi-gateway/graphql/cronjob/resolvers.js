@@ -25,7 +25,7 @@ module.exports = {
       return context.broker
         .forwardAndGetReply$(
           'Cronjob',
-          'gateway.graphql.query.getCronjobDetail',
+          'emigateway.graphql.query.getCronjobDetail',
           { root, args, jwt: context.encodedToken },
           500
         )
@@ -36,7 +36,7 @@ module.exports = {
       return context.broker
         .forwardAndGetReply$(
           'Cronjob',
-          'gateway.graphql.query.getCronjobs',
+          'emigateway.graphql.query.getCronjobs',
           { root, args, jwt: context.encodedToken },
           500
         )
@@ -47,7 +47,7 @@ module.exports = {
       return context.broker
         .forwardAndGetReply$(
           'Cronjob',
-          'gateway.graphql.query.getCronjobTableSize',
+          'emigateway.graphql.query.getCronjobTableSize',
           { root, args, jwt: context.encodedToken },
           500
         )
@@ -60,7 +60,7 @@ module.exports = {
       return context.broker
         .forwardAndGetReply$(
           'Cronjob',
-          'gateway.graphql.mutation.persistCronjob',
+          'emigateway.graphql.mutation.persistCronjob',
           { root, args, jwt: context.encodedToken },
           500
         )
@@ -71,7 +71,7 @@ module.exports = {
       return context.broker
         .forwardAndGetReply$(
           'Cronjob',
-          'gateway.graphql.mutation.updateCronjob',
+          'emigateway.graphql.mutation.updateCronjob',
           { root, args, jwt: context.encodedToken },
           500
         )
@@ -82,7 +82,7 @@ module.exports = {
       return context.broker
         .forwardAndGetReply$(
           'Cronjob',
-          'gateway.graphql.mutation.removeCronjob',
+          'emigateway.graphql.mutation.removeCronjob',
           { root, args, jwt: context.encodedToken },
           500
         )
@@ -93,7 +93,7 @@ module.exports = {
       return context.broker
         .forwardAndGetReply$(
           'Cronjob',
-          'gateway.graphql.mutation.executeCronjob',
+          'emigateway.graphql.mutation.executeCronjob',
           { root, args, jwt: context.encodedToken },
           500
         )

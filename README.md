@@ -18,7 +18,7 @@ This process is handle by three subprocess:
   * [FrontEnd](#frontend) - not yet available  
     *  [Environment variables](#frontend_env_vars) - not yet available  
   * [API](#api)
-    * [GraphQL throught Gateway API](#api_gateway_graphql)
+    * [GraphQL throught EMI Gateway API](#api_emi_gateway_graphql)
   * [BackEnd](#backend)
     *  [Devices](#backend_cronjob)
         *  [Environment variables](#backend_cronjob_env_vars)
@@ -33,7 +33,7 @@ This process is handle by three subprocess:
 ├── frontend                            => Micro-FrontEnds - not yet available  
 │   └── emi                             => Micro-FrontEnd for [EMI FrontEnd](https://github.com/nebulae-pyxis/emi) - not yet available  
 ├── api                                 => Micro-APIs  
-│   └── gateway                         => Micro-API for [Gateway API](https://github.com/nebulae-pyxis/gateway)  
+│   └── emi-gateway                     => Micro-API for [EMI Gateway API](https://github.com/nebulae-pyxis/emi-gateway)  
 ├── backend                             => Micro-BackEnds  
 │   ├── cronjob                         => Micro-BackEnd responsible for store and execute jobs 
 ├── etc                                 => Micro-Service config Files.  
@@ -53,10 +53,10 @@ This process is handle by three subprocess:
 Exposed interfaces to send Commands and Queries by the CQRS principles.  
 The MicroService exposes its interfaces as Micro-APIs that are nested on the general API. 
 
-## GraphQL throught Gateway API <a name="api_gateway_graphql"></a>
-These are the exposed GraphQL functions throught the [Gateway API](https://github.com/nebulae-pyxis/gateway). 
+## GraphQL throught EMI Gateway API <a name="api_emi_gateway_graphql"></a>
+These are the exposed GraphQL functions throught the [EMI Gateway API](https://github.com/nebulae-pyxis/emi-gateway). 
 
-Note: You may find the GraphQL schema [here](api/gateway/graphql/devices/schema.gql)
+Note: You may find the GraphQL schema [here](api/emi-gateway/graphql/devices/schema.gql)
 
 ### Queries
 

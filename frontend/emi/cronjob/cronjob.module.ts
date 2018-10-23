@@ -37,4 +37,4 @@ const routes = [
   ],
   providers: [CronjobsService, CronjobDetailService, DatePipe]
 })
-export class CronjobModule {}
+export class CronjobModule { }

@@ -7,7 +7,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { GatewayService } from '../../../../api/gateway.service';
+import { GatewayService } from '../../../../api/emi-gateway.service';
 import { getCronjobs, getCronjobTableSize, executeCronjob} from '../gql/Cronjobs';
 import gql from 'graphql-tag';
 
