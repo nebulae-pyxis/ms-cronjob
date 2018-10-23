@@ -5,7 +5,7 @@ let mongoDB = require('./MongoDB')();
 //const cronjobManager = require('../domain/CronjobManager')();
 const broker = require('../tools/broker/BrokerFactory')();
 
-const MATERIALIZED_VIEW_TOPIC = 'materialized-view-updates';
+const MATERIALIZED_VIEW_TOPIC = 'emi-gateway-materialized-view-updates';
 
 class CronjobDA {
   /**
