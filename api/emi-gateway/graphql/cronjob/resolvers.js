@@ -117,7 +117,7 @@ module.exports = {
 
 broker.getMaterializedViewsUpdates$(['CronjobRegistersUpdated']).subscribe(
   evt => {
-    console.log('Se escucha evento: ', evt);
+    //console.log('Se escucha evento: ', evt);
     pubsub.publish('CronjobRegistersUpdated', {
       CronjobRegistersUpdated: evt.data
     });

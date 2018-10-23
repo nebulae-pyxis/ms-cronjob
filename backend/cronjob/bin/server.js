@@ -27,7 +27,6 @@ const start = () => {
         () => console.log('cronjob started')
     );
 }
-
 start();
 
 
