@@ -133,7 +133,7 @@ class GraphQlService {
       .mergeMap(msg => this.sendResponseBack$(msg))
       .subscribe(
         msg => {
-          console.log(`GraphQlService process: ${msg}`);
+          //console.log(`GraphQlService process: ${msg}`);
         },
         onErrorHandler,
         onCompleteHandler
