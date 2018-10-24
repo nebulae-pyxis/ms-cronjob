@@ -175,7 +175,7 @@ class GraphQlService {
       .mergeMap(message =>
         Rx.Observable.of(message)
           .map(message => ({ authToken: jsonwebtoken.verify(message.data.jwt, jwtPublicKey), message, failedValidations: [] }))
-          .catch(err =>
+          .catch(err => 
             EventSourcingMonitor.errorHandler$(err)
               .map(response => ({
                 errorResponse: { response, correlationId: message.id, replyTo: message.attributes.replyTo },
