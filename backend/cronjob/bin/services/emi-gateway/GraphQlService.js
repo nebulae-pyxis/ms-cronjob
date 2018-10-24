@@ -152,6 +152,19 @@ class GraphQlService {
   }
 
   /**
+  * send response back if neccesary
+  * @param {any} msg Object with data necessary  to send response
+  */
+  sendResponseBack$(msg) {
+    return Rx.Observable.of(msg)
+      .mergeMap(({ response, correlationId, replyTo }) =>
+        replyTo
+          ? broker.send$(replyTo, "gateway.graphql.Query.response", response, { correlationId })
+          : Rx.Observable.of(undefined)
+      )
+  }
+
+  /**
    * Verify the message if the request is valid.
    * @param {any} request request message
    * @returns { Rx.Observable< []{request: any, failedValidations: [] }>}  Observable object that containg the original request and the failed validations
@@ -172,21 +185,6 @@ class GraphQlService {
           )
       )
   }
-
- /**
-  * 
-  * @param {any} msg Object with data necessary  to send response
-  */
- sendResponseBack$(msg) {
-  return Rx.Observable.of(msg).mergeMap(
-    ({ response, correlationId, replyTo }) =>
-      replyTo
-        ? broker.send$(replyTo, "emigateway.graphql.Query.response", response, {
-            correlationId
-          })
-        : Rx.Observable.of(undefined)
-  );
-}
 
   stop$() {
     return Rx.Observable.from(this.subscriptions).map(subscription => {
