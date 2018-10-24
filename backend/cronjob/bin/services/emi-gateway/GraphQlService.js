@@ -152,9 +152,9 @@ class GraphQlService {
   }
 
   /**
-  * send response back if neccesary
-  * @param {any} msg Object with data necessary  to send response
-  */
+   * send response back if neccesary
+   * @param {any} msg Object with data necessary  to send response
+   */
   sendResponseBack$(msg) {
     return Rx.Observable.of(msg)
       .mergeMap(({ response, correlationId, replyTo }) =>
@@ -175,8 +175,8 @@ class GraphQlService {
       .mergeMap(message =>
         Rx.Observable.of(message)
           .map(message => ({ authToken: jsonwebtoken.verify(message.data.jwt, jwtPublicKey), message, failedValidations: [] }))
-          .catch(err => 
-            EventSourcingMonitor.errorHandler$(err)
+          .catch(err =>
+            cronjobs.errorHandler$(err)
               .map(response => ({
                 errorResponse: { response, correlationId: message.id, replyTo: message.attributes.replyTo },
                 failedValidations: ['JWT']
