@@ -13,12 +13,15 @@ spec:
         app: cronjob
     spec:      
       containers:
-      - image: nebulaepyxis/cronjob.backend.cronjob:1.0.6
+      - image: nebulaepyxis/cronjob.backend.cronjob:1.0.7
         name: cronjob
         volumeMounts:
         - name: google-application-credentials
           mountPath: "/etc/GOOGLE_APPLICATION_CREDENTIALS"
           readOnly: true
+        resources:
+          requests:
+            cpu: "50m"
         env:     
         # EVENT STORE CONFIG 
         - name: GOOGLE_APPLICATION_CREDENTIALS

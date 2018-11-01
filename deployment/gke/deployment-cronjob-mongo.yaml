@@ -42,6 +42,10 @@ spec:
         volumeMounts:
         - name: cronjob-mongo-persistent-storage
           mountPath: /data/db
+        resources:
+            requests:
+              cpu: 50m
+              memory: 100Mi
       volumes:
       - name: cronjob-mongo-persistent-storage
         persistentVolumeClaim:

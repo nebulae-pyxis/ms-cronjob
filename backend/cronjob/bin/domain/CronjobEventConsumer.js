@@ -6,7 +6,6 @@ let instance;
 class CronjobEventConsumer {
 
     constructor() {
-
     }
 
     handleCronjobCreated$(event) {  
