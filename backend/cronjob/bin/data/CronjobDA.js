@@ -125,6 +125,10 @@ class CronjobDA {
     .mergeMap(result => {
       console.log('updateCronjob => ', result);
       return broker.send$(MATERIALIZED_VIEW_TOPIC, `CronjobRegistersUpdated`, true);
+    })
+    .catch(error => {
+      console.log('Error updated => ', error);
+      throw error;
     });
   }
 
