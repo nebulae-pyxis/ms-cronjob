@@ -24,7 +24,7 @@ class EventStoreService {
     //default error handler
     const onErrorHandler = error => {
       console.error('Error handling  EventStore incoming event');
-      console.error(e.stack || e);
+      console.error(error.stack || error);
       process.exit(1);
     };
     //default onComplete handler
