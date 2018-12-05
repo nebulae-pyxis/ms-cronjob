@@ -108,21 +108,23 @@ class CronjobDA {
   }
 
   static updateCronjob$(cronjob) {
-    delete cronjob.version;
+    const cronjobCopy = {
+      id: cronjob.id,
+      name: cronjob.name,
+      eventType: cronjob.eventType,
+      cronjobFormat: cronjob.cronjobFormat,
+      body: cronjob.body,
+      active: cronjob.active
+    };
+    //delete cronjob.version;
     const collection = mongoDB.db.collection('Cronjobs');
-    return Rx.Observable.of(cronjob).mergeMap(result => {
-      return Rx.Observable.fromPromise(
-        collection.updateOne(
-          { id: cronjob.id },
-          {
-            $set: cronjob,
-            $inc: { version: 1 }
-          }
-        )
-      ).mergeMap(
-        result =>
-          broker.send$(MATERIALIZED_VIEW_TOPIC, `CronjobRegistersUpdated`, true)
-      );
+    return Rx.Observable.of(cronjobCopy)
+    .mergeMap(result => {
+        return collection.updateOne({ id: cronjobCopy.id }, { $set: cronjobCopy, $inc: { version: 1 }})
+    })
+    .mergeMap(result => {
+      console.log('updateCronjob => ', result);
+      return broker.send$(MATERIALIZED_VIEW_TOPIC, `CronjobRegistersUpdated`, true);
     });
   }
 
