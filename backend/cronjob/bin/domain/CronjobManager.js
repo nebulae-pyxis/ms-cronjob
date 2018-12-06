@@ -107,7 +107,7 @@ class CronjobManager {
       })
       .do(job => {
         if (job) {
-          this.jobVsScheduleJobList.pull(job);
+          this.jobVsScheduleJobList = this.jobVsScheduleJobList.filter(e => e != job)
         }
       })
       .mergeMap(job => {

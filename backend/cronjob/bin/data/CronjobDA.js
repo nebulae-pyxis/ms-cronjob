@@ -123,13 +123,8 @@ class CronjobDA {
         return collection.updateOne({ id: cronjobCopy.id }, { $set: cronjobCopy, $inc: { version: 1 }})
     })
     .mergeMap(result => {
-      console.log('updateCronjob => ', result);
       return broker.send$(MATERIALIZED_VIEW_TOPIC, `CronjobRegistersUpdated`, true);
     })
-    .catch(error => {
-      console.log('Error updated => ', error);
-      throw error;
-    });
   }
 
   static removeCronjob$(cronjobId) {
