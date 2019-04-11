@@ -106,6 +106,7 @@ module.exports = {
         ).toPromise();
     }
   },
+  
   Subscription: {
     CronjobRegistersUpdated: {
       subscribe: withFilter(
