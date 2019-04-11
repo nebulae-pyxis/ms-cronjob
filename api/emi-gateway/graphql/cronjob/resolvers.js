@@ -1,22 +1,27 @@
 const withFilter = require('graphql-subscriptions').withFilter;
 const PubSub = require('graphql-subscriptions').PubSub;
-const Rx = require('rxjs');
+const {handleError$} = require('../../tools/GraphqlResponseTools');
+
+const { of } = require('rxjs');
+const { map, mergeMap, catchError } = require('rxjs/operators');
 const broker = require('../../broker/BrokerFactory')();
 
 let pubsub = new PubSub();
 
-function getReponseFromBackEnd$(response) {
-  return Rx.Observable.of(response).map(resp => {
-    if (resp.result.code != 200) {
-      const err = new Error();
-      err.name = 'Error';
-      err.message = resp.result.error;
-      // this[Symbol()] = resp.result.error;
-      Error.captureStackTrace(err, 'Error');
-      throw err;
-    }
-    return resp.data;
-  });
+function getResponseFromBackEnd$(response) {
+  return of(response)
+  .pipe(
+      map(resp => {
+          if (resp.result.code != 200) {
+              const err = new Error();
+              err.name = 'Error';
+              err.message = resp.result.error;
+              Error.captureStackTrace(err, 'Error');
+              throw err;
+          }
+          return resp.data;
+      })
+  );
 }
 
 module.exports = {
@@ -28,9 +33,9 @@ module.exports = {
           'emigateway.graphql.query.getCronjobDetail',
           { root, args, jwt: context.encodedToken },
           500
-        )
-        .mergeMap(response => getReponseFromBackEnd$(response))
-        .toPromise();
+        ).pipe(
+          mergeMap(response => getResponseFromBackEnd$(response))
+        ).toPromise();
     },
     getCronjobs(root, args, context) {
       return context.broker
@@ -39,9 +44,9 @@ module.exports = {
           'emigateway.graphql.query.getCronjobs',
           { root, args, jwt: context.encodedToken },
           500
-        )
-        .mergeMap(response => getReponseFromBackEnd$(response))
-        .toPromise();
+        ).pipe(
+          mergeMap(response => getResponseFromBackEnd$(response))
+        ).toPromise();
     },
     getCronjobTableSize(root, args, context) {
       return context.broker
@@ -50,9 +55,9 @@ module.exports = {
           'emigateway.graphql.query.getCronjobTableSize',
           { root, args, jwt: context.encodedToken },
           500
-        )
-        .mergeMap(response => getReponseFromBackEnd$(response))
-        .toPromise();
+        ).pipe(
+          mergeMap(response => getResponseFromBackEnd$(response))
+        ).toPromise();
     }
   },
   Mutation: {
@@ -63,9 +68,9 @@ module.exports = {
           'emigateway.graphql.mutation.persistCronjob',
           { root, args, jwt: context.encodedToken },
           500
-        )
-        .mergeMap(response => getReponseFromBackEnd$(response))
-        .toPromise();
+        ).pipe(
+          mergeMap(response => getResponseFromBackEnd$(response))
+        ).toPromise();
     },
     updateCronjob(root, args, context) {
       return context.broker
@@ -74,9 +79,9 @@ module.exports = {
           'emigateway.graphql.mutation.updateCronjob',
           { root, args, jwt: context.encodedToken },
           500
-        )
-        .mergeMap(response => getReponseFromBackEnd$(response))
-        .toPromise();
+        ).pipe(
+          mergeMap(response => getResponseFromBackEnd$(response))
+        ).toPromise();
     },
     removeCronjob(root, args, context) {
       return context.broker
@@ -85,9 +90,9 @@ module.exports = {
           'emigateway.graphql.mutation.removeCronjob',
           { root, args, jwt: context.encodedToken },
           500
-        )
-        .mergeMap(response => getReponseFromBackEnd$(response))
-        .toPromise();
+        ).pipe(
+          mergeMap(response => getResponseFromBackEnd$(response))
+        ).toPromise();
     },
     executeCronjob(root, args, context) {
       return context.broker
@@ -96,9 +101,9 @@ module.exports = {
           'emigateway.graphql.mutation.executeCronjob',
           { root, args, jwt: context.encodedToken },
           500
-        )
-        .mergeMap(response => getReponseFromBackEnd$(response))
-        .toPromise();
+        ).pipe(
+          mergeMap(response => getResponseFromBackEnd$(response))
+        ).toPromise();
     }
   },
   Subscription: {
